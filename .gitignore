@@ -1,0 +1,17 @@
+Dependencies
+/node_modules
+
+Vite
+.DS_Store
+dist
+dist-ssr
+*.local
+
+Lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+IDE
+.vscode
+.idea

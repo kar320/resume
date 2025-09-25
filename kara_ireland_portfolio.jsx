@@ -44,7 +44,7 @@ const portfolioData = {
     title: "Product Manager | AI & Developer Platforms",
     location: "Boulder, CO (Open to relocation)",
     email: "karaireland@google.com",
-    linkedin: "https://www.linkedin.com/in/kara-ireland/", // Placeholder
+    linkedin: "https://www.linkedin.com/in/karaireland320/", // Placeholder
     summary: "A strategic and user-centric Product Manager with a proven record of transitioning from a top-performing Technical Writer to leading high-impact initiatives in the AI and developer ecosystem. Expert in driving product vision, leading cross-functional teams, and shipping complex features that bridge competitive gaps and enhance user experience. Passionate about leveraging AI to build the future of workspace productivity.",
 
     experience: [

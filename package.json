@@ -1,0 +1,20 @@
+{
+  "name": "pm-portfolio-kara-ireland",
+  "private": true,
+  "version": "0.0.1",
+  "description": "A portfolio website for Kara Ireland, Product Manager.",
+  "scripts": {
+    "dev": "echo 'To run this locally, use a simple HTTP server. No build step needed.'",
+    "build": "echo 'No build step required for this project.'"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "keywords": [
+    "react",
+    "portfolio",
+    "product-manager"
+  ],
+  "author": "Kara Ireland"
+}

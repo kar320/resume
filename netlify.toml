@@ -4,9 +4,15 @@
   # Specifies the directory where Netlify will find your serverless functions.
   functions = "netlify/functions"
 
+# This plugin tells Netlify to automatically install dependencies 
+# listed in the package.json file inside your functions directory.
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
 [[redirects]]
   # This rule makes your function accessible at a cleaner URL.
   # Requests to "/api/askGemini" will be forwarded to the function.
   from = "/api/askGemini"
   to = "/.netlify/functions/askGemini"
   status = 200 # Use 200 to rewrite the URL without a browser redirect.
+

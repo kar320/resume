@@ -1,0 +1,8 @@
+{
+  "name": "kara-portfolio-netlify-functions",
+  "version": "1.0.0",
+  "description": "Dependencies for the serverless function.",
+  "dependencies": {
+    "@google/generative-ai": "^0.1.3"
+  }
+}

@@ -426,53 +426,30 @@ const FAQ = () => {
         setApiResponse(null);
         setApiError(null);
 
-        const apiKey = ""; // API key will be injected by the environment
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+        // This URL now points to our secure Netlify Function endpoint
+        const apiUrl = `/api/askGemini`;
 
-        const payload = {
-            systemInstruction: {
-                parts: [{ text: portfolioData.faq.geminiContext }]
-            },
-            contents: [{
-                parts: [{ text: userInput }]
-            }]
-        };
-        
         try {
-            // Using exponential backoff for retries
-            let response;
-            let delay = 1000;
-            for (let i = 0; i < 5; i++) {
-                response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if (response.ok) {
-                    break;
-                }
-                if (response.status === 429 || response.status >= 500) {
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    delay *= 2;
-                } else {
-                    throw new Error(`API request failed with status ${response.status}`);
-                }
-            }
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: userInput })
+            });
 
             if (!response.ok) {
-                 throw new Error(`API request failed after retries with status ${response.status}`);
+                 throw new Error(`Request failed with status ${response.status}`);
             }
 
             const result = await response.json();
-            const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+            const text = result.reply;
 
             if (text) {
                 setApiResponse(text);
             } else {
-                throw new Error("No content received from API.");
+                throw new Error("No content received from the function.");
             }
         } catch (error) {
-            console.error("Gemini API Error:", error);
+            console.error("Netlify Function Error:", error);
             setApiError("Sorry, I couldn't process that request right now. Please try again later.");
         } finally {
             setIsLoading(false);
@@ -562,4 +539,6 @@ export default function App() {
         </div>
     );
 }
+
+
 

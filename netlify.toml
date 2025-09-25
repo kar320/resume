@@ -1,6 +1,12 @@
 # This file configures your site for Netlify deployment.
 
 [build]
+  # This tells Netlify to run the "npm run build" command (defined in package.json).
+  # This command will use Vite to compile your React code.
+  command = "npm run build"
+  # After building, Vite places the final website in a "dist" folder.
+  # This tells Netlify where to find the finished site to deploy.
+  publish = "dist"
   # Specifies the directory where Netlify will find your serverless functions.
   functions = "netlify/functions"
 
@@ -14,5 +20,12 @@
   # Requests to "/api/askGemini" will be forwarded to the function.
   from = "/api/askGemini"
   to = "/.netlify/functions/askGemini"
-  status = 200 # Use 200 to rewrite the URL without a browser redirect.
+  status = 200
+
+# This is a catch-all rule for single-page applications (SPAs) like React.
+# It ensures that if a user refreshes the page on a deep link, it still loads your app.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
